@@ -21,7 +21,7 @@
 3. Création du système de connexion avec Redux 
 4. Création d’un HOC, vérification du token
 
-
+npm init pour initiliser le projet 
 npm i node-dev
 npm install dotenv
 npm install express 
