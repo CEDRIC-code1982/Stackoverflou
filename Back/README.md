@@ -25,3 +25,4 @@ npm init pour initiliser le projet
 npm i node-dev
 npm install dotenv
 npm install express 
+npm install mongoose
