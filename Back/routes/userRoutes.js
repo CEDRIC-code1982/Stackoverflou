@@ -20,7 +20,7 @@ module.exports = (app) => {
 
         const user = await User(data);
         const result = await user.save();
-
+        console.log(result);
         res.json({ status: 200, result, result })
     })
 
@@ -43,6 +43,7 @@ module.exports = (app) => {
             if (compare) {
                 const payload = { email: user[0].email, id: user[0]._id }
                 const token = jwt.sign(payload, secret);
+
                 res.json({ status: 200, data: { token, user: user[0] } })
             } else {
                 res.json({ status: 401, msg: "not allowed bad password" })

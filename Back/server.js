@@ -15,9 +15,9 @@ app.use(cors());
 //recupération de MongoDB
 const MongoDBClient = require('./mongoClient');
 
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
 const topicRoutes = require('./routes/topicRoutes');
-
+const messageRoutes = require('./routes/messageRoutes');
 
 // définition du port dans une variable
 const port = process.env.PORT;
@@ -27,7 +27,8 @@ app.get('/', (req, res, next) => {
 });
 
 userRoutes(app);
-topicRoutes(app)
+topicRoutes(app);
+messageRoutes(app);
 
 app.listen(port, () => {
     console.log(`listening on port ${port} serveur Express ✅ 🚀 ✨ `)

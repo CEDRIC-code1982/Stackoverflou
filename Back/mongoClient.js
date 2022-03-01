@@ -13,7 +13,7 @@ const MongoDBClient = {
     initialize: () => {
         console.log("Démarrage de mongoClient")
         try {
-            console.log("Je rentre dans mon try")
+            //console.log("Je rentre dans mon try")
             const client = mongoose.connect(URI,
                 {
                     useNewUrlParser: true,
@@ -24,7 +24,6 @@ const MongoDBClient = {
                 .catch((err) => { console.log(err, `Connexion à MongoDB échouée à ${DB} ! ❌`) })
         } catch (err) {
             throw Error(err)
-            console.log(err)
         }
     }
 }
