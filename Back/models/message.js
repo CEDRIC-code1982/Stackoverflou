@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const Mongoose = require('mongoose');
 
 // La méthode  Schema  de Mongoose vous permet de créer un schéma de données pour votre base de données MongoDB.
-const messageSchema = mongoose.Schema({
+const messageSchema = new Mongoose.Schema({
     content: { type: String, required: true },
     user_id: { type: String, required: true },
     topic_id: { type: Number, required: true },
-    creationDate: { type: Number, required: true },
-});
+    creationDate: { type: Date, required: true }
+}, { collection: "message" });
 
 // La méthode  model  transforme ce modèle en un modèle utilisable.
-module.exports = mongoose.model('Message', messageSchema);
+module.exports = Mongoose.model('message', messageSchema);
