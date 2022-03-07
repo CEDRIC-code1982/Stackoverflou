@@ -1,58 +1,85 @@
 import React from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
-//j'importe mon composant connecté 
-import SettingsField from '../../components/SettingsField';
+import PropTypes from 'prop-types';
 
+import Field from './Field';
 
-//! 1 Je vais passer par mon composant SettingsField qui contient la logique de l'input 
-//! et après je vais vers le container SignUp  
 import './styles.scss';
 
-const SignUp = ({
-    handleFormSubmit
-}) => (
-    <div className='signup-page'>
-        <h2>Créer votre compte</h2>
-        <form
-            className="signup-page__form"
-            onSubmit={handleFormSubmit}>
+const SignUpPage = ({
+    firstName,
+    lastName,
+    nickName,
+    email,
+    password,
+    changeField,
+    handleSignUp,
+    signUp,
+}) => {
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        handleSignUp();
+    };
 
-            <SettingsField
-                stateKey="firstName"
-                type="text"
-                placeholder="Prénom"
-            />
+    return (
+        <div className='signUp'>
+            <div className="signup-form">
+                <h2>Créer votre compte</h2>
+                <form autoComplete="off" className="signup-form-element" onSubmit={handleSubmit}>
+                    <Field
+                        name="firstName"
+                        placeholder="Firstname"
+                        onChange={changeField}
+                        value={firstName}
+                    />
+                    <Field
+                        name="lastName"
+                        placeholder="Lastname"
+                        onChange={changeField}
+                        value={lastName}
+                    />
+                    <Field
+                        name="nickName"
+                        placeholder="Nickname"
+                        onChange={changeField}
+                        value={nickName}
+                    />
+                    <Field
+                        name="email"
+                        placeholder="Adresse Email"
+                        onChange={changeField}
+                        value={email}
+                    />
+                    <Field
+                        name="password"
+                        type="password"
+                        placeholder="Mot de passe"
+                        onChange={changeField}
+                        value={password}
+                    />
+                    <button
+                        type="submit"
+                        className="signup-form-button"
+                    >
+                        Validation
+                    </button>
+                    {signUp && (<Navigate replace to="/" />)}
+                    <Link to="/" className="backToHomeLink">Annuler</Link>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-            <SettingsField
-                stateKey="lastName"
-                type="text"
-                placeholder="Nom"
-            />
+SignUpPage.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    nickName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    changeField: PropTypes.func.isRequired,
+    handleSignUp: PropTypes.func.isRequired,
+};
 
-            <SettingsField
-                stateKey="nickName"
-                type="text"
-                placeholder="Surnom"
-            />
-
-            <SettingsField
-                stateKey="email"
-                type="email"
-                placeholder="Email"
-            />
-
-            <SettingsField
-                stateKey="password"
-                type="password"
-                placeholder="mot de passe"
-            />
-
-            <button className='settings__submit' type="submit">Valider</button>
-
-            <Link to="/" className="backToHomeLink">Annuler</Link>
-        </form>
-    </div>
-);
-
-export default SignUp;
+export default SignUpPage;

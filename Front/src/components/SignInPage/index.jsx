@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import Field from './Field';
 
 import './styles.scss';
 
-const SigninPage = ({
+const SignInPage = ({
     email,
     password,
     changeField,
@@ -21,12 +23,6 @@ const SigninPage = ({
 
     return (
         <div className='signIn'>
-            <button
-                className="button"
-                type="button"
-            >
-                Signin
-            </button>
             <div className="login-form">
                 {isLogged && (
                     <div className="login-form-logged">
@@ -64,6 +60,7 @@ const SigninPage = ({
                         >
                             OK
                         </button>
+                        <Link to="/" className="backToHomeLink">Home</Link>
                     </form>
                 )}
             </div>
@@ -71,7 +68,7 @@ const SigninPage = ({
     );
 };
 
-SigninPage.propTypes = {
+SignInPage.propTypes = {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     changeField: PropTypes.func.isRequired,
@@ -81,9 +78,9 @@ SigninPage.propTypes = {
     loggedMessage: PropTypes.string,
 };
 
-SigninPage.defaultProps = {
+SignInPage.defaultProps = {
     isLogged: false,
     loggedMessage: 'Connecté',
 };
 
-export default SigninPage;
+export default SignInPage;

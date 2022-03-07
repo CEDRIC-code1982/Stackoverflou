@@ -5,7 +5,7 @@ import NavBar from '../NavBar/index';
 import Home from '../Home/index';
 import Footer from '../Footer/index';
 import SignIn from '../../containers/SignInPage/index';
-import SignUp from '../SignUpPage/index';
+import SignUp from '../../containers/SignUpPage/index';
 
 import './styles.scss';
 

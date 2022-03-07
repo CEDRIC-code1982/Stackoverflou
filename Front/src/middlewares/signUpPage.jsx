@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-import { SUBMIT_SETTINGS, signupSuccess } from '../actions/settingsField';
+import { SUBMIT_SIGNUP, signupSuccess } from '../actions/signUp';
 
 const signupMiddleware = (store) => (next) => (action) => {
     switch (action.type) {
-        case SUBMIT_SETTINGS: {
+        case SUBMIT_SIGNUP: {
             const state = store.getState();
-            axios.post('http://localhost:9000/api/user/login', {
-                "firstName": state.signUp.name,
-                "lastName": state.signUp.name,
-                "nickName": state.signUp.name,
+            axios.post('http://localhost:9000/api/user/signup', {
+                "firstName": state.signUp.firstName,
+                "lastName": state.signUp.lastName,
+                "nickName": state.signUp.nickName,
                 "email": state.signUp.email,
                 "password": state.signUp.password,
             })
                 .then((response) => {
-                    console.log('je suis la réponse de registrer', response.data);
-                    store.dispatch(signupSuccess(response.data))
+                    console.log('je suis la réponse du middleware de signUp', response.data.result);
+                    store.dispatch(signupSuccess(response.data.result))
                 })
                 .catch((error) => console.log(error))
             break;

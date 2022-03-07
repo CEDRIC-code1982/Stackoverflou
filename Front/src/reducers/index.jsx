@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import settingsFieldReducer from './settingsField';
+import signUpReducer from './signUp';
 import signInReducer from './signIn';
 
 const rootReducer = combineReducers({
 
-  settings: settingsFieldReducer,
+  signUp: signUpReducer,
   user: signInReducer,
 
 });
