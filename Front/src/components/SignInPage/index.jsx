@@ -1,39 +1,89 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import {Link} from 'react-router-dom';
-
-import SettingsField from '../../containers/SettingsField';
+import Field from './Field';
 
 import './styles.scss';
 
-const SignIn = ({
-    handleFormSubmit
-}) => (
+const SigninPage = ({
+    email,
+    password,
+    changeField,
+    handleLogin,
+    handleLogout,
+    isLogged,
+    loggedMessage,
+}) => {
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        handleLogin();
+    };
 
-    <div className='signin-page'>
-        <h2>Connexion</h2>
-        <form
-            className="signin-page__form"
-            onSubmit={handleFormSubmit}>
+    return (
+        <div className='signIn'>
+            <button
+                className="button"
+                type="button"
+            >
+                Signin
+            </button>
+            <div className="login-form">
+                {isLogged && (
+                    <div className="login-form-logged">
+                        <p className="login-form-message">
+                            {loggedMessage}
+                        </p>
+                        <button
+                            type="button"
+                            className="login-form-button"
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </button>
+                    </div>
+                )}
+                {!isLogged && (
 
-            <SettingsField
-                stateKey="email"
-                type="email"
-                placeholder="Email"
-            />
+                    <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+                        <Field
+                            name="email"
+                            placeholder="Adresse Email"
+                            onChange={changeField}
+                            value={email}
+                        />
+                        <Field
+                            name="password"
+                            type="password"
+                            placeholder="Mot de passe"
+                            onChange={changeField}
+                            value={password}
+                        />
+                        <button
+                            type="submit"
+                            className="login-form-button"
+                        >
+                            OK
+                        </button>
+                    </form>
+                )}
+            </div>
+        </div>
+    );
+};
 
-            <SettingsField
-                stateKey="password"
-                type="password"
-                placeholder="mot de passe"
-            />
+SigninPage.propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    changeField: PropTypes.func.isRequired,
+    handleLogin: PropTypes.func.isRequired,
+    handleLogout: PropTypes.func.isRequired,
+    isLogged: PropTypes.bool,
+    loggedMessage: PropTypes.string,
+};
 
-            <button className='settings__submit' type="submit">Valider</button>
+SigninPage.defaultProps = {
+    isLogged: false,
+    loggedMessage: 'Connecté',
+};
 
-            <Link to="/" className="backToHomeLink">Annuler</Link>
-        </form>
-    </div>
-
-);
-
-export default SignIn;
+export default SigninPage;

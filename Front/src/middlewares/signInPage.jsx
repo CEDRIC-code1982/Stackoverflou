@@ -12,7 +12,9 @@ const signInMiddleware = (store) => (next) => (action) => {
                 "password": state.user.password,
             })
                 .then((response) => {
-                    const { name, token } = response.data
+                    console.log(response);
+                    const token = response.data.data.token;
+                    const name = response.data.data.user.nickName;
                     store.dispatch(loginSuccess(name, token))
                 })
                 .catch((error) => console.log(error))

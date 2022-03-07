@@ -12,7 +12,6 @@ const NavBar = () => (
     <div>
       <Link to="/signup" className="backToSignUp"><button>Sign Up</button></Link>
       <Link to="/signin" className="backToSignIn"><button>Sign In</button></Link>
-      <button >Log Out</button>
     </div>
   </div>
 );
