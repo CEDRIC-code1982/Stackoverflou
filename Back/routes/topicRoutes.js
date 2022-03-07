@@ -1,7 +1,9 @@
-module.exports = (app) => {
-    const Topic = require('../models/topic');
+const withAuth = require('../middleware/withAuth');
+const Topic = require('../models/topic');
 
-    app.post('/api/topic/save', async (req, res) => {
+module.exports = (app) => {
+
+    app.post('/api/topic/save', withAuth, async (req, res) => {
 
         const data = {
             title: req.body.title,
@@ -10,7 +12,7 @@ module.exports = (app) => {
             creationDate: new Date()
         }
 
-        const topic = await Topic(data);
+        const topic = await new Topic(data);
         const result = await topic.save();
 
         res.json({ status: 200, result, result })
@@ -32,7 +34,7 @@ module.exports = (app) => {
         res.json({ status: 200, topic: topic[0] })
     })
 
-    app.put('/api/topic/update/:id', async (req, res) => {
+    app.put('/api/topic/update/:id', withAuth, async (req, res) => {
         const id = req.params.id;
 
         const data = {
@@ -45,7 +47,7 @@ module.exports = (app) => {
         res.json({ status: 200, result: result })
     })
 
-    app.delete('/api/topic/delete/:id', async (req, res) => {
+    app.delete('/api/topic/delete/:id', withAuth, async (req, res) => {
         const id = req.params.id;
 
         const result = await Topic.deleteOne({ _id: id });

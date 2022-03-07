@@ -18,7 +18,7 @@ module.exports = (app) => {
             creationDate: new Date()
         }
 
-        const user = await User(data);
+        const user = await new User(data);
         const result = await user.save();
         console.log(result);
         res.json({ status: 200, result, result })

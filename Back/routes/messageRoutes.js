@@ -1,7 +1,10 @@
-module.exports = (app) => {
-    const Message = require('../models/message');
+const Message = require('../models/message');
+const User = require('../models/user');
+const withAuth = require('../middleware/withAuth');
 
-    app.post('/api/message/save', async (req, res) => {
+module.exports = (app) => {
+
+    app.post('/api/message/save', withAuth, async (req, res) => {
 
         const data = {
             content: req.body.content,
@@ -10,7 +13,7 @@ module.exports = (app) => {
             creationDate: new Date()
         }
 
-        const message = await Message(data);
+        const message = await new Message(data);
         const result = await message.save();
 
         res.json({ status: 200, result, result })
@@ -32,7 +35,23 @@ module.exports = (app) => {
         res.json({ status: 200, message: message[0] })
     })
 
-    app.put('/api/message/update/:id', async (req, res) => {
+    app.get("/api/message/by_topic/:topic_id", async (req, res) => {
+        const topic_id = req.params.topic_id;
+        const messages = await Message.find({ topic_id: topic_id })
+        if (typeof messages.length !== "number") {
+            res.json({ status: 500, data: { msg: "internal server error", err: messages } })
+        }
+
+        const completeMessages = await Promise.all(messages.map(async (message) => {
+            const user = await User.find({ _id: message.user_id })
+            const m = { ...message.toOject(), nickName: user[0].nickName }
+            return m;
+        }))
+        console.log("completeMessages", completeMessages);
+        res.json({ status: 200, data: { msg: "message by topic", messages: completeMessages } });
+    })
+
+    app.put('/api/message/update/:id', withAuth, async (req, res) => {
         const id = req.params.id;
 
         const data = {
@@ -44,7 +63,7 @@ module.exports = (app) => {
         res.json({ status: 200, result: result })
     })
 
-    app.delete('/api/message/delete/:id', async (req, res) => {
+    app.delete('/api/message/delete/:id', withAuth, async (req, res) => {
         const id = req.params.id;
 
         const result = await Message.deleteOne({ _id: id });
