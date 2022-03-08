@@ -2,4 +2,18 @@
     background-color: aqua;
     display: flex;
     justify-content: space-between;
+    margin: 0 0.1rem;
+}
+
+.login-form-logged {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-form-message {
+    margin-right: 1rem;
+}
+
+.backToSignUp {
+    margin-right: 0.5rem;
 }

@@ -3,9 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import { toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
+
 import Field from './Field';
 
 import './styles.scss';
+
+toast.configure()//
 
 const SignUpPage = ({
     firstName,
@@ -17,6 +22,7 @@ const SignUpPage = ({
     handleSignUp,
     signUp,
 }) => {
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
         handleSignUp();
@@ -24,6 +30,17 @@ const SignUpPage = ({
 
     const navigate = useNavigate();
 
+    const notify = () => {
+        toast.success('Votre compte a bien été créer !', {
+            position: "top-right",
+            autoClose: 3500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
     return (
         <div className='signUp'>
             <div className="signup-form">
@@ -63,14 +80,13 @@ const SignUpPage = ({
                     <button
                         type="submit"
                         className="signup-form-button"
+                        onClick={notify}
                     >
                         Validation
                     </button>
-                    
                     <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
                     {signUp && navigate("/")}
                 </form>
-                
             </div>
         </div>
     );

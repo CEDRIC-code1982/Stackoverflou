@@ -26,7 +26,7 @@ const SignInPage = ({
     return (
         <div className='signIn'>
             <div className="login-form">
-                {isLogged && (
+                {/*{isLogged && (
                     <div className="login-form-logged">
                         <p className="login-form-message">
                             {loggedMessage}
@@ -40,7 +40,7 @@ const SignInPage = ({
                         </button>
                     </div>
                 )}
-                {!isLogged && (
+                {!isLogged && (*/}
 
                     <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
                         <Field
@@ -64,7 +64,7 @@ const SignInPage = ({
                         </button>
                         <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
                     </form>
-                )}
+               {/*} )} */}
                 {isLogged && navigate("/")}
             </div>
         </div>
