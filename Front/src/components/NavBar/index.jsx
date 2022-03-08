@@ -30,7 +30,7 @@ const NavBar = ({
         </div>
       )}
       {!isLogged && (
-        <div>
+        <div className='button'>
           <Link to="/signup" className="backToSignUp"><button>Sign Up</button></Link>
           <Link to="/signin" className="backToSignIn"><button>Sign In</button></Link>
         </div>
