@@ -25,4 +25,8 @@ npm init pour initiliser le projet
 npm i node-dev
 npm install dotenv
 npm install express 
-npm install mongoose / npm install mongoose-unique-validator /npm install bcrypt / npm install jsonwebtoken
+npm install mongoose 
+npm install mongoose-unique-validator
+npm install bcrypt 
+npm install jsonwebtoken
+npm i cors body-parser

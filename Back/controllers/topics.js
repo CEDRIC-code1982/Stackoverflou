@@ -1,3 +1,5 @@
+//! Voir pour mise en place du controllers une fois le front ok
+
 const Topics = require('../models/Topics');
 
 exports.getOneTopics = (req, res, next) => {
