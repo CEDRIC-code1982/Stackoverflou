@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -21,6 +21,8 @@ const SignUpPage = ({
         evt.preventDefault();
         handleSignUp();
     };
+
+    const navigate = useNavigate();
 
     return (
         <div className='signUp'>
@@ -64,9 +66,11 @@ const SignUpPage = ({
                     >
                         Validation
                     </button>
-                    {signUp && (<Navigate replace to="/" />)}
-                    <Link to="/" className="backToHomeLink">Annuler</Link>
+                    
+                    <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
+                    {signUp && navigate("/")}
                 </form>
+                
             </div>
         </div>
     );

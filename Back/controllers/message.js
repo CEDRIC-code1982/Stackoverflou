@@ -1,4 +1,4 @@
-//! en attente de modification
+//! Voir pour mise en place du controllers une fois le front ok
 
 const Message = require('../models/Message');
 

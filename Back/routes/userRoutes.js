@@ -32,7 +32,7 @@ module.exports = (app) => {
         res.json({ status: 200, user: user[0] })
     })
 
-    app.post('/api/user/login', async (req, res) => {
+    app.post('/api/user/signin', async (req, res) => {
 
         const user = await User.find({ email: req.body.email });
 

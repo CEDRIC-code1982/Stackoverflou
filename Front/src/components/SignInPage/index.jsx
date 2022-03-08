@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,8 @@ const SignInPage = ({
         evt.preventDefault();
         handleLogin();
     };
+
+    const navigate = useNavigate();
 
     return (
         <div className='signIn'>
@@ -60,9 +62,10 @@ const SignInPage = ({
                         >
                             OK
                         </button>
-                        <Link to="/" className="backToHomeLink">Home</Link>
+                        <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
                     </form>
                 )}
+                {isLogged && navigate("/")}
             </div>
         </div>
     );

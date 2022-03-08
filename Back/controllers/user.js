@@ -1,49 +1,53 @@
-//! en attente de modification
+//! Voir pour mise en place du controllers une fois le front ok
 
 const bcrypt = require('bcrypt');
+const saltRound = 10;
 const jwt = require('jsonwebtoken');
+const secret = "secret";
 
-const User = require('../models/User');
+const User = require('../models/user');
 
-exports.register = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-      const user = new User({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        nickname: req.body.nickname,
-        email: req.body.email,
-        password: hash,
-        creationDate: req.body.creationDate
-      });
-      user.save()
-        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-        .catch(error => res.status(400).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+exports.signUp = async (req, res) => {
+  const hash = await bcrypt.hash(req.body.password, saltRound)
+
+  const data = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      nickName: req.body.nickName,
+      email: req.body.email,
+      password: hash,
+      creationDate: new Date()
+  }
+
+  const user = await new User(data);
+  const result = await user.save();
+  console.log(result);
+  res.json({ status: 200, result, result })
 };
 
-exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
-    .then(user => {
-      if (!user) {
-        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+exports.getOneUser = async (req, res) => {
+  const id = req.params.id;
+
+  const user = await User.find({ _id: id });
+
+  res.json({ status: 200, user: user[0] })
+};
+
+exports.signIn = async (req, res) => {
+
+  const user = await User.find({ email: req.body.email });
+
+  if (user.length <= 0) {
+      res.json({ status: 404, msg: "user email not found" })
+  } else {
+      const compare = await bcrypt.compare(req.body.password, user[0].password);
+      if (compare) {
+          const payload = { email: user[0].email, id: user[0]._id }
+          const token = jwt.sign(payload, secret);
+
+          res.json({ status: 200, data: { token, user: user[0] } })
+      } else {
+          res.json({ status: 401, msg: "not allowed bad password" })
       }
-      bcrypt.compare(req.body.password, user.password)
-        .then(valid => {
-          if (!valid) {
-            return res.status(401).json({ error: 'Mot de passe incorrect !' });
-          }
-          res.status(200).json({
-            userId: user._id,
-            token: jwt.sign(
-              { userId: user._id },
-              'RANDOM_TOKEN_SECRET',
-              { expiresIn: '24h' }
-            )
-          });
-        })
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
-};
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route} from "react-router-dom";
 
-import NavBar from '../NavBar/index';
+import NavBar from '../../containers/NavBar/index';
 import Home from '../Home/index';
 import Footer from '../Footer/index';
 import SignIn from '../../containers/SignInPage/index';

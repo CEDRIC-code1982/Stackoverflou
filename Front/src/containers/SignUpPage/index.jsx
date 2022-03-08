@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
     nickName: state.signUp.nickName,
     email: state.signUp.email,
     password: state.signUp.password,
+    signUp: state.signUp.signUp,
 });
 
 const mapDispatchToProps = (dispatch) => ({

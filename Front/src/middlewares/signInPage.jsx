@@ -7,7 +7,7 @@ const signInMiddleware = (store) => (next) => (action) => {
         case SUBMIT_LOGIN: {
             // avec getstate on apporte le state dans le MW
             const state = store.getState();
-            axios.post('http://localhost:9000/api/user/login', {
+            axios.post('http://localhost:9000/api/user/signin', {
                 "email": state.user.email,
                 "password": state.user.password,
             })
