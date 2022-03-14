@@ -12,7 +12,7 @@ const NavBar = ({
   return (
   <div className='navbar'>
     <div>
-      <Link to="/" className="backToHome"><button className='button'>Home</button></Link>
+      <Link to="/" className="backToHome"><button className='button'>Accueil</button></Link>
     </div>
     <div className='connected'>
       {isLogged && (
@@ -25,14 +25,14 @@ const NavBar = ({
             className="login-form-button"
             onClick={handleLogout}
           >
-            Logout
+            Déconnexion
           </button>
         </div>
       )}
       {!isLogged && (
         <div className='buttons'>
-          <Link to="/signup" className="backToSignUp"><button className='button'>Sign Up</button></Link>
-          <Link to="/signin" className="backToSignIn"><button className='button'>Sign In</button></Link>
+          <Link to="/signup" className="backToSignUp"><button className='button'>S'inscrire</button></Link>
+          <Link to="/signin" className="backToSignIn"><button className='button'>Se connecter</button></Link>
         </div>
       )}
     </div>

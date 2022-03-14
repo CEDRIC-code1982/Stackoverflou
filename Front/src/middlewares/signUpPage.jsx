@@ -6,7 +6,7 @@ const signupMiddleware = (store) => (next) => (action) => {
     switch (action.type) {
         case SUBMIT_SIGNUP: {
             const state = store.getState();
-            axios.post('http://localhost:9000/api/user/signup', {
+            axios.post(`${process.env.REACT_APP_API_URL}/api/user/signup`, {
                 "firstName": state.signUp.firstName,
                 "lastName": state.signUp.lastName,
                 "nickName": state.signUp.nickName,

@@ -3,9 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import { Flip, toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
+
 import Field from './Field';
 
 import './styles.scss';
+
+toast.configure()//
 
 const SignInPage = ({
     email,
@@ -23,6 +28,19 @@ const SignInPage = ({
 
     const navigate = useNavigate();
 
+    const notify = () => {
+        toast.success('Welcome !', {
+            position: "top-right",
+            autoClose: 3500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            //theme: 'colored',
+            transition: Flip,
+        })
+    }
     return (
         <div className='signIn'>
             <div className="login-form">
@@ -59,6 +77,7 @@ const SignInPage = ({
                         <button
                             type="submit"
                             className="login-form-button"
+                            onClick={notify}
                         >
                             OK
                         </button>

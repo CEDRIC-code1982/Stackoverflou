@@ -1,11 +1,12 @@
 import React from 'react';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import NavBar from '../../containers/NavBar/index';
 import Home from '../Home/index';
 import Footer from '../Footer/index';
 import SignIn from '../../containers/SignInPage/index';
 import SignUp from '../../containers/SignUpPage/index';
+import RequireAuth from '../../helper/RequireAuth';
 
 import './styles.scss';
 
@@ -14,9 +15,21 @@ const App = () => (
   <div className="App">
     <NavBar />
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/" element={
+        <RequireAuth withAuth={true}>
+          <Home />
+        </RequireAuth>
+      } />
+      <Route path="/signin" element={
+        <RequireAuth withAuth={false}>
+          <SignIn />
+        </RequireAuth>
+      } />
+      <Route path="/signup" element={
+        <RequireAuth withAuth={false}>
+          <SignUp />
+        </RequireAuth>
+      } />
     </Routes>
     <Footer />
   </div>

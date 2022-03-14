@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { toast } from 'react-toastify';//
+import { Flip, toast } from 'react-toastify';//
 import 'react-toastify/dist/ReactToastify.css'//
 
 import Field from './Field';
@@ -39,6 +39,7 @@ const SignUpPage = ({
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+            transition: Flip,
         })
     }
     return (
@@ -48,19 +49,19 @@ const SignUpPage = ({
                 <form autoComplete="off" className="signup-form-element" onSubmit={handleSubmit}>
                     <Field
                         name="firstName"
-                        placeholder="Firstname"
+                        placeholder="Prénom"
                         onChange={changeField}
                         value={firstName}
                     />
                     <Field
                         name="lastName"
-                        placeholder="Lastname"
+                        placeholder="Nom"
                         onChange={changeField}
                         value={lastName}
                     />
                     <Field
                         name="nickName"
-                        placeholder="Nickname"
+                        placeholder="Pseudo"
                         onChange={changeField}
                         value={nickName}
                     />
@@ -85,7 +86,7 @@ const SignUpPage = ({
                         Validation
                     </button>
                     <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
-                    {signUp && navigate("/")}
+                    {signUp && navigate("/signin")}
                 </form>
             </div>
         </div>
