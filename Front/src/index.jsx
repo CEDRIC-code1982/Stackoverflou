@@ -8,6 +8,8 @@ import { store } from './store';
 
 import App from './components/App';
 
+import './styles.scss';
+
 // on charge le css de notre librairie de composants
 //import 'semantic-ui-css/semantic.min.css';
 

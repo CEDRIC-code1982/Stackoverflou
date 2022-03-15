@@ -59,7 +59,7 @@ const SignInPage = ({
                     </div>
                 )}
                 {!isLogged && (*/}
-
+                    <h2>Connexion</h2>
                     <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
                         <Field
                             name="email"
@@ -76,12 +76,12 @@ const SignInPage = ({
                         />
                         <button
                             type="submit"
-                            className="login-form-button"
+                            className="button"
                             onClick={notify}
                         >
                             OK
                         </button>
-                        <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
+                        <Link to="/" className="backToHomeLink"><button className='button'>Annuler</button></Link>
                     </form>
                {/*} )} */}
                 {isLogged && navigate("/")}

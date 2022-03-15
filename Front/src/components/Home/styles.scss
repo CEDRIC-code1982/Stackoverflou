@@ -1,5 +1,8 @@
 .home {
-    background-color: chartreuse;
-    width: auto;
-    height: 94.33vh;
+    background-color: whitesmoke;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
 }

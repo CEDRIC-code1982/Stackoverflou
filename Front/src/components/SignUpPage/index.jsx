@@ -80,12 +80,12 @@ const SignUpPage = ({
                     />
                     <button
                         type="submit"
-                        className="signup-form-button"
+                        className="button"
                         onClick={notify}
                     >
                         Validation
                     </button>
-                    <Link to="/" className="backToHomeLink"><button>Annuler</button></Link>
+                    <Link to="/" className="backToHomeLink"><button className="button">Annuler</button></Link>
                     {signUp && navigate("/signin")}
                 </form>
             </div>

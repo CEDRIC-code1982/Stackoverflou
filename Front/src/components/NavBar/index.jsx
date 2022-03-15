@@ -22,7 +22,7 @@ const NavBar = ({
           </p>
           <button
             type="button"
-            className="login-form-button"
+            className="button"
             onClick={handleLogout}
           >
             Déconnexion
