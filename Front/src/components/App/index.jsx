@@ -6,9 +6,12 @@ import Home from '../Home/index';
 import Footer from '../Footer/index';
 import SignIn from '../../containers/SignInPage/index';
 import SignUp from '../../containers/SignUpPage/index';
+import AllTopics from '../../containers/AllTopics/index';
+
 import RequireAuth from '../../helper/RequireAuth';
 
 import './styles.scss';
+
 
 
 const App = () => (
@@ -28,6 +31,11 @@ const App = () => (
       <Route path="/signup" element={
         <RequireAuth withAuth={false}>
           <SignUp />
+        </RequireAuth>
+      } />
+      <Route path="/alltopics" element={
+        <RequireAuth withAuth={false}>
+          <AllTopics />
         </RequireAuth>
       } />
     </Routes>
