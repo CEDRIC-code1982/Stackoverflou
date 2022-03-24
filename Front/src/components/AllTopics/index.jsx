@@ -7,7 +7,7 @@ import './styles.scss';
 
 const AllTopics = ({ allTopics, loadAllTopics }) => {
     const [loading, setLoader] = useState(true);
-    console.log(`allTopics dans le composant AllTopics`, allTopics);
+    //console.log(`allTopics dans le composant AllTopics`, allTopics);
     useEffect(() => {
         setTimeout(() => { setLoader(!loading) }, 1000);
         loadAllTopics();

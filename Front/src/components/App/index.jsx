@@ -13,8 +13,6 @@ import RequireAuth from '../../helper/RequireAuth';
 
 import './styles.scss';
 
-
-
 const App = () => (
   <div className="App">
     <NavBar />

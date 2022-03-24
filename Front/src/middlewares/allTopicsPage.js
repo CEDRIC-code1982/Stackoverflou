@@ -13,7 +13,7 @@ const allTopicsMiddleware = (store) => (next) => (action) => {
             axios.get(`${process.env.REACT_APP_API_URL}/api/topic/all`)
 
                 .then((response) => {
-                    console.log('response de GET_ALL_TOPICS', response.data.topics);
+                    //console.log('response de GET_ALL_TOPICS', response.data.topics);
                     store.dispatch(getAllTopicsSucess(response.data.topics));
                 })
                 .catch((error) => console.log(error))
