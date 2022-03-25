@@ -9,7 +9,7 @@ const AllTopics = ({ allTopics, loadAllTopics }) => {
     const [loading, setLoader] = useState(true);
     //console.log(`allTopics dans le composant AllTopics`, allTopics);
     useEffect(() => {
-        setTimeout(() => { setLoader(!loading) }, 1000);
+        setTimeout(() => { setLoader(!loading) }, 300);
         loadAllTopics();
     }, []);
 
@@ -18,12 +18,12 @@ const AllTopics = ({ allTopics, loadAllTopics }) => {
     }
     return (
         <div className='topics'>
-            {allTopics.map((obj) => {
+            {allTopics.map((topic) => {
                 return (
-                    <Link to={`/topic/${obj._id}`}className='card' key={obj._id}>
-                        <p>{obj.title}</p>
-                        <p>{obj.description}</p>
-                        <p>{obj.creationDate}</p>
+                    <Link to={`/topic/${topic._id}`} className='card' key={topic._id}>
+                        <p>{topic.title}</p>
+                        <p>{topic.description}</p>
+                        <p>{topic.creationDate}</p>
                     </Link>
                 )
             })}

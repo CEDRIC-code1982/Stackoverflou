@@ -20,6 +20,7 @@ const NavBar = ({
           <p className="login-form-message">
             {loggedMessage}
           </p>
+          <Link to="/" className="backToHome">
           <button
             type="button"
             className="button"
@@ -27,6 +28,7 @@ const NavBar = ({
           >
             Déconnexion
           </button>
+          </Link>
         </div>
       )}
       {!isLogged && (

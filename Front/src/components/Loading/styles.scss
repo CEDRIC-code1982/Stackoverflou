@@ -34,7 +34,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: blue;
+    color: rgb(44, 103, 190);
     font-size: 2em;
     animation: fade .75s infinite alternate;
 
@@ -42,7 +42,7 @@
         content: "";
         height: 30%;
         width: 100%;
-        background-color: rgb(121, 215, 252);
+        background-color: rgb(121, 193, 252);
         opacity: .3;
         position: absolute;
         top: 70%;
