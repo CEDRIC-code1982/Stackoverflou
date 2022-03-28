@@ -26,7 +26,6 @@ const OneTopic = ({ oneTopic, loadOneTopic }) => {
       <div className='topic'>
         <p>{oneTopic.title}</p>
         <p>{oneTopic.description}</p>
-        <p>{oneTopic.creationDate}</p>
       </div>
       <Link to={`/alltopics`}  >Retour</Link>
     </>

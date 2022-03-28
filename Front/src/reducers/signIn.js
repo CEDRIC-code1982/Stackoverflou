@@ -4,8 +4,10 @@ export const initialState = {
     isLogged: false,
     email: '',
     password: '',
+    user_id:'',
     name: null,
     token: '',
+    
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -31,6 +33,7 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 name: action.name,
                 token: action.token,
+                user_id: action.user_id,
                 isLogged: true,
                 email: '',
                 password: '',

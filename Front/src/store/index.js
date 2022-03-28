@@ -7,6 +7,7 @@ import signUpMiddleware from '../middlewares/signUpPage';
 import signInMiddleware from '../middlewares/signInPage';
 import allTopicsMiddleware from '../middlewares/allTopicsPage';
 import oneTopicMiddleware from '../middlewares/oneTopicPage';
+import addTopicMiddleware from '../middlewares/addTopicsPage';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,6 +18,7 @@ const enhancers = composeEnhancers(
         signInMiddleware,
         allTopicsMiddleware,
         oneTopicMiddleware,
+        addTopicMiddleware,
 
     ),
 );

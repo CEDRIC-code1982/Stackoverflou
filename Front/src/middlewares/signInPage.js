@@ -12,10 +12,11 @@ const signInMiddleware = (store) => (next) => (action) => {
                 "password": state.user.password,
             })
                 .then((response) => {
-                    console.log(response);
+                    console.log("response suite au login user-id=", response.data.data.user._id);
                     const token = response.data.data.token;
                     const name = response.data.data.user.nickName;
-                    store.dispatch(loginSuccess(name, token))
+                    const user_id = response.data.data.user._id;
+                    store.dispatch(loginSuccess(name, token, user_id))
                 })
                 .catch((error) => console.log(error))
             break;

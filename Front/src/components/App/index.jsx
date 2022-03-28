@@ -8,6 +8,7 @@ import SignIn from '../../containers/SignInPage/index';
 import SignUp from '../../containers/SignUpPage/index';
 import AllTopics from '../../containers/AllTopics/index';
 import OneTopic from '../../containers/OneTopic/index';
+import AddTopic from '../../containers/AddTopic/index';
 
 import RequireAuth from '../../helper/RequireAuth';
 
@@ -40,6 +41,11 @@ const App = () => (
       <Route path="/topic/:id" element={
         <RequireAuth withAuth={false}>
           <OneTopic />
+        </RequireAuth>
+      } />
+      <Route path="/addtopic" element={
+        <RequireAuth withAuth={false}>
+          <AddTopic />
         </RequireAuth>
       } />
     </Routes>

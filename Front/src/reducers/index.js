@@ -4,6 +4,7 @@ import signUpReducer from './signUp';
 import signInReducer from './signIn';
 import allTopicsReducer from './allTopics';
 import oneTopicReducer from './oneTopic';
+import addTopicReducer from './addTopics';
 
 const rootReducer = combineReducers({
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   user: signInReducer,
   topics: allTopicsReducer,
   topic: oneTopicReducer,
+  add: addTopicReducer,
 
 });
 
