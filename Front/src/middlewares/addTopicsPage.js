@@ -18,8 +18,8 @@ const addTopicMiddleware = (store) => (next) => (action) => {
                     }
                 })
                 .then((response) => {
-                    console.log('je suis la réponse du middleware de addTopic', response.data.data.msg);
-                    store.dispatch(topicSendSucess(response.data.data.msg))
+                    console.log('je suis la réponse du middleware de addTopic', response.data.status);
+                    store.dispatch(topicSendSucess(response.data.status))
                 })
                 .catch((error) => console.log(error))
             break;

@@ -19,8 +19,9 @@ export const logout = () => ({
     type: LOGOUT,
 });
 
-export const loginSuccess = (name, token) => ({
+export const loginSuccess = (name, token, user_id) => ({
     type: LOGIN_SUCCESS,
     name,
     token,
+    user_id,
 });

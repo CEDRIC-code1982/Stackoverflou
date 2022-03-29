@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import AddTopic from '../../AddTopic';
+import AddTopic from '../../components/AddTopic';
 
 import {
     changeTitleInput,
@@ -10,7 +10,8 @@ import {
 
 const mapStateToProps = (state) => ({
     title: state.add.title,
-    description: state.add.description
+    description: state.add.description,
+    addTopic: state.add.addTopic,
 });
 
 const mapDispatchToProps = (dispatch) => ({

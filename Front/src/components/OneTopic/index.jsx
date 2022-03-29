@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import Loading from '../Loading';
 
 import './styles.scss';
 
-const OneTopic = ({ oneTopic, loadOneTopic }) => {
+const OneTopic = ({ oneTopic, loadOneTopic, handleDelete, topicId }) => {
   const [loading, setLoader] = useState(true);
   const params = useParams();
-  const { id } = params
+  const { id } = params;
 
+  //console.log("topicId dans le composant", topicId);
   //console.log("id dans OneTopic", id);
   //console.log(`oneTopic dans le composant OneTopic`, oneTopic);
   useEffect(() => {
@@ -21,6 +22,12 @@ const OneTopic = ({ oneTopic, loadOneTopic }) => {
   if (loading) {
     return <Loading />
   }
+
+  const deleteTopic = (evt) => {
+    evt.preventDefault();
+    handleDelete(topicId);
+  };
+
   return (
     <>
       <div className='topic'>
@@ -28,6 +35,9 @@ const OneTopic = ({ oneTopic, loadOneTopic }) => {
         <p>{oneTopic.description}</p>
       </div>
       <Link to={`/alltopics`}  >Retour</Link>
+      <button onClick={deleteTopic}>Supprimer</button>
+      <Link to={`/updatetopic/${topicId}`}  ><button>Modifier</button></Link>
+
     </>
   )
 };

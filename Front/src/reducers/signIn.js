@@ -4,10 +4,9 @@ export const initialState = {
     isLogged: false,
     email: '',
     password: '',
-    user_id:'',
+    user_id: '',
     name: null,
     token: '',
-    
 };
 
 const reducer = (state = initialState, action = {}) => {

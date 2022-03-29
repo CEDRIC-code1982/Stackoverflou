@@ -7,7 +7,8 @@ import {
 const initialState = {
     title: "",
     description: "",
-    msg: "",
+    status: "",
+    addTopic: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,9 +26,10 @@ const reducer = (state = initialState, action) => {
         case TOPIC_SEND_SUCCESS:
             return {
                 ...state,
+                status:action.apiData,
+                addTopic: true,
                 title: "",
                 description: "",
-                msg: action.msg,
             }    
         default:
             return state;

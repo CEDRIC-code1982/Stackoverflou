@@ -1,6 +1,11 @@
 import React from 'react'
 
-const AddTopic = ({ title, tiltleInputChange, description, descriptionInputChange, onSubmitForm }) => {
+import { useNavigate} from 'react-router-dom'
+
+const AddTopic = ({ title, tiltleInputChange, description, descriptionInputChange, onSubmitForm, addTopic }) => {
+
+  const navigate = useNavigate();
+
   return (
     <form className='form' onSubmit={
       onSubmitForm}>
@@ -27,6 +32,7 @@ const AddTopic = ({ title, tiltleInputChange, description, descriptionInputChang
         type="submit">
         Envoyer
       </button>
+      {addTopic && navigate("/alltopics")}
     </form>
   )
 }

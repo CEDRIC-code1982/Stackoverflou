@@ -12,7 +12,7 @@ const signInMiddleware = (store) => (next) => (action) => {
                 "password": state.user.password,
             })
                 .then((response) => {
-                    console.log("response suite au login user-id=", response.data.data.user._id);
+                    //console.log("response suite au login ", response.data.data.user);
                     const token = response.data.data.token;
                     const name = response.data.data.user.nickName;
                     const user_id = response.data.data.user._id;

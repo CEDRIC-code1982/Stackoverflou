@@ -9,6 +9,7 @@ import SignUp from '../../containers/SignUpPage/index';
 import AllTopics from '../../containers/AllTopics/index';
 import OneTopic from '../../containers/OneTopic/index';
 import AddTopic from '../../containers/AddTopic/index';
+import UpdateTopic from '../UpdateTopic';
 
 import RequireAuth from '../../helper/RequireAuth';
 
@@ -46,6 +47,11 @@ const App = () => (
       <Route path="/addtopic" element={
         <RequireAuth withAuth={false}>
           <AddTopic />
+        </RequireAuth>
+      } />
+      <Route path="/updatetopic/:id" element={
+        <RequireAuth withAuth={false}>
+          <UpdateTopic />
         </RequireAuth>
       } />
     </Routes>

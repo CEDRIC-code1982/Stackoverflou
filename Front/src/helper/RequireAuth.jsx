@@ -19,7 +19,7 @@ export default function RequireAuth({ children, withAuth }) {
             } else {
                 checkToken(token)
                     .then((res) => {
-                        console.log("res dans RequireAuth",res)
+                        console.log("response dans RequireAuth",res.data.mesg)
                         if (res.status !== 200) {
                             return navigate("/signin");
                         } else {

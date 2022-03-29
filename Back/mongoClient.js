@@ -20,8 +20,8 @@ const MongoDBClient = {
                     useUnifiedTopology: true
                 })
 
-            client.then(() => { return console.log(`Connexion à MongoDB réussi à ${DB} ! ✅ `) })
-                .catch((err) => { console.log(err, `Connexion à MongoDB échouée à ${DB} ! ❌`) })
+            client.then(() => { return console.log(`Connexion à MongoDB réussi et à la base de donnée ${DB} ! ✅ `) })
+                .catch((err) => { console.log(err, `Connexion à MongoDB échouée et à la base de donnée ${DB} ! ❌`) })
         } catch (err) {
             throw Error(err)
         }

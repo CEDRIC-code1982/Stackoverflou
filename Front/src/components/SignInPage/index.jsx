@@ -17,9 +17,9 @@ const SignInPage = ({
     password,
     changeField,
     handleLogin,
-    handleLogout,
+    //handleLogout,
     isLogged,
-    loggedMessage,
+    //loggedMessage,
 }) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();

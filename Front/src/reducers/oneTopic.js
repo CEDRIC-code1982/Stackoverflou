@@ -1,9 +1,9 @@
-import { GET_ONE_TOPIC, GET_ONE_TOPIC_SUCCESS } from "../actions/onetopic";
+import { GET_ONE_TOPIC, GET_ONE_TOPIC_SUCCESS, DELETE_ONE_TOPIC } from "../actions/onetopic";
 
 export const initialState = {
 
     oneTopic: {},
-
+    deleteOneTopic: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +18,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 oneTopic: action.apiData,
             };
+        case DELETE_ONE_TOPIC:
+            return {
+                ...state,
+                deleteOneTopic: true,
+            }
         default:
             return state;
     }
